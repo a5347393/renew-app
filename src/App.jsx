@@ -208,8 +208,7 @@ export default function App() {
           </button>
         </div>
         <div style={{ marginTop: 14 }}>
-          <div style={{ display: "flex", justifyContent: "space-between", fontSize: 11, color: "#A8E6CC", marginBottom: 5 }}>
-            <span>已勾選 {checkedCount} / {allItems.length} 項</span>
+          <div style={{ display: "flex", justifyContent: "flex-end", fontSize: 11, color: "#A8E6CC", marginBottom: 5 }}>
             <span>{pct}%</span>
           </div>
           <div style={{ height: 4, background: "#0D7A53", borderRadius: 4, overflow: "hidden" }}>
