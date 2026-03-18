@@ -93,7 +93,7 @@ export default function App() {
   const totalCap = Object.values(ITEMS).flatMap(g => g.items).reduce((acc, item) => {
     if (!checked[item.id]) return acc;
     const cap = getCap(item); if (!cap) return acc;
-    return acc + ((item.id === "safety" && bonus) ? cap + item.bonus : cap);
+    return acc + ((item.id === "safety" && bonus) ? item.bonus : cap);
   }, 0);
   const checkedCount = Object.values(checked).filter(Boolean).length;
   const allItems = Object.values(ITEMS).flatMap(g => g.items);
@@ -148,7 +148,7 @@ export default function App() {
             <div style={{ background: group.bg, color: group.color, padding: "6px 14px", borderRadius: 5, fontWeight: 700, fontSize: 12, marginBottom: 10 }}>{group.label}</div>
             {vis.map(item => {
               const cap = getCap(item);
-              const capStr = cap ? `上限 ${(item.id === "safety" && bonus) ? cap + "+" + item.bonus : cap} ${item.unit}` : "含於室內補助範圍";
+              const capStr = cap ? `上限 ${(item.id === "safety" && bonus) ? item.bonus : cap} ${item.unit}` : "含於室內補助範圍";
               const cSubs = (SUBITEMS[item.id] || []).filter(s => subChecked[`${item.id}::${s}`]);
               return (
                 <div key={item.id} style={{ border: `1.5px solid ${group.color}22`, borderLeft: `4px solid ${group.color}`, borderRadius: 6, padding: "10px 14px", marginBottom: 8 }}>
@@ -272,7 +272,7 @@ export default function App() {
                 const cap = getCap(item), isOn = !!checked[item.id], isExp = !!expanded[item.id];
                 const subs = SUBITEMS[item.id] || [];
                 const subCount = subs.filter(s => subChecked[`${item.id}::${s}`]).length;
-                const capDisplay = cap ? `${(item.id === "safety" && bonus) ? cap+"+"+item.bonus : cap} ${item.unit}` : "";
+                const capDisplay = cap ? `${(item.id === "safety" && bonus) ? item.bonus : cap} ${item.unit}` : "";
 
                 return (
                   <div key={item.id} style={{ borderRadius: 12, marginBottom: 8, overflow: "hidden", border: `1.5px solid ${isOn ? group.color : "#E8E8E4"}`, boxShadow: isOn ? `0 2px 12px ${group.color}18` : "none", transition: "all .15s" }}>
@@ -293,7 +293,7 @@ export default function App() {
                         {item.id === "safety" && (
                           <label onClick={e => e.stopPropagation()} style={{ display: "inline-flex", alignItems: "center", gap: 6, marginTop: 8, fontSize: 11, color: "#5B2FA0", cursor: "pointer", background: "#F2EEFF", padding: "5px 10px", borderRadius: 20, border: "1px solid #B89FE0" }}>
                             <input type="checkbox" checked={bonus} onChange={() => setBonus(p=>!p)} onClick={e=>e.stopPropagation()} style={{ accentColor: "#5B2FA0" }} />
-                            符合加碼條件 → 上限再加 30萬/戶
+                            符合加碼條件 → 上限提升為 30萬/戶
                           </label>
                         )}
 
