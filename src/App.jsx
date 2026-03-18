@@ -207,14 +207,7 @@ export default function App() {
             {exporting ? "產生中..." : "匯出 PDF"}
           </button>
         </div>
-        <div style={{ marginTop: 14 }}>
-          <div style={{ display: "flex", justifyContent: "flex-end", fontSize: 11, color: "#A8E6CC", marginBottom: 5 }}>
-            <span>{pct}%</span>
-          </div>
-          <div style={{ height: 4, background: "#0D7A53", borderRadius: 4, overflow: "hidden" }}>
-            <div style={{ height: "100%", width: `${pct}%`, background: "#6FD4AA", borderRadius: 4, transition: "width .3s" }} />
-          </div>
-        </div>
+
       </div>
 
       <div style={{ padding: "0 16px" }}>
